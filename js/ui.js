@@ -19,3 +19,8 @@ ui.clear = function () {
 ui.popup = function (tell) {
 	alert(tell);
 };
+ui.update = function (level) {
+	$('tr').each(function () {
+		$(this).remove();
+	});
+}

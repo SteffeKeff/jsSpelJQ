@@ -29,15 +29,16 @@ $(function () {
 					$('tr').eq(i).append('<td>' + level.map[level.current][i][j] + '</td>');
 				}
 			}
-			$('#game').append('<p id="keyCode"></p>');
 			$(window).on('keydown', function (e) {
 				$('#keyCode').text(e.keyCode);
 			});
-			// var runMain = true;
-			// while (runMain) {
+			$('#game').append('<p id="keyCode"></p>');
+			var runMain = true;
+			while (runMain) {
+				alert('hej');
+			}
 			// 	//console.log(level.toString(level.current));
 			// 	//logic.askMoveLcation();
-			// }
 		}
 	});
 });
