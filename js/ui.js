@@ -13,14 +13,28 @@ ui.input = function (ask) {
 ui.output = function (tell) {
 	console.log(tell);
 };
-ui.clear = function () {
-	console.clear();
-};
-ui.popup = function (tell) {
-	alert(tell);
-};
 ui.update = function (level) {
 	$('tr').each(function () {
 		$(this).remove();
 	});
+	for (var i = 0; i < level.mapH[level.current]; i++) {
+		$('#gameBoard').append('<tr></tr>');
+		for (var j = 0; j < level.mapW[level.current]; j++) {
+			if (level.current == 2) {
+				if (level.map[level.current][i][j] === '#') {
+					$('tr').eq(i).append('<td><img src="rock.png" alt="rock"></td>');
+				} else if (level.map[level.current][i][j] === '@') {
+					$('tr').eq(i).append('<td><img src="doodle.png" alt="rock"></td>');
+				} else if (level.map[level.current][i][j] === '*') {
+					$('tr').eq(i).append('<td><img src="bomb.png" alt="rock"></td>');
+				} else if (level.map[level.current][i][j] === '$') {
+					$('tr').eq(i).append('<td><img src="money.png" alt="rock"></td>');
+				} else {
+					$('tr').eq(i).append('<td></td>');
+				}
+			} else {
+				$('tr').eq(i).append('<td>' + level.map[level.current][i][j] + '</td>');
+			}
+		}
+	}
 }

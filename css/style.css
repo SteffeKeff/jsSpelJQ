@@ -42,6 +42,11 @@ button{
 	margin-top:10px;
 	display:block;
 }
+td{
+	width:17px;
+	height:15px;
+	padding:0;
+}
 #invalid{
 	color:red;
 	margin:5px;

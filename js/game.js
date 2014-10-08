@@ -7,12 +7,9 @@
 /////////////////////////////////////////////////////////////////////////////
 $(function () {
 	'use strict';
-	//ui.output(level.toString(level.current));
-	//ui.popup('Starta spelet?');
-	//ui.clear();
 	level.current = 2;
 	var runMain = false;
-	//player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+	player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
 	$('#play').on('click', function () {
 		player.name = $('#name').val().trim();
 		if (player.name === '') {
@@ -24,22 +21,13 @@ $(function () {
 			$('#game').show();
 			$('#game').append('<table id="gameBoard"></table>');
 			$('#gameBoard').addClass('center');
-			for (var i = 0; i < 11; i++) {
-				$('#gameBoard').append('<tr></tr>');
-				for (var j = 0; j < 32; j++) {
-					$('tr').eq(i).append('<td>' + level.map[level.current][i][j] + '</td>');
-				}
-			}
+			ui.update(level);
+			$('#game').append('<p id="keyCode"></p>');
 			$(window).on('keydown', function (e) {
 				$('#keyCode').text(e.keyCode);
+				logic.askMoveLocation(e.keyCode);
+				ui.update(level);
 			});
-			$('#game').append('<p id="keyCode"></p>');
-			var runMain = true;
-			while (runMain) {
-				alert('hej');
-			}
-			// 	//console.log(level.toString(level.current));
-			// 	//logic.askMoveLcation();
 		}
 	});
 });

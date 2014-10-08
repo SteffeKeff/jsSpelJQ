@@ -7,7 +7,7 @@
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
 level.mapH.push(11);
-level.mapW.push(37);
+level.mapW.push(32);
 level.playerStartX.push(15);
 level.playerStartY.push(9);
 var addToLevel = [];
@@ -22,4 +22,4 @@ addToLevel.push('#               ################'); //7
 addToLevel.push('#  #############               #'); //8
 addToLevel.push('#              @               #'); //9
 addToLevel.push('################################'); //10
-level.map.push(addToLevel);    //level.map[1][rowY][charX]
+level.map.push(addToLevel); //level.map[1][rowY][charX]
