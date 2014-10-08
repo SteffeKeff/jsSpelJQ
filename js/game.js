@@ -17,6 +17,7 @@ $(function () {
 			$('#invalid').text('your name is not valid');
 			//alert('your name is not valid');
 		} else {
+			$('#invalid').text(' ');
 			$('#menu').hide();
 			$('#player-name').text('Player name: ' + player.name);
 			$('#game').show();
