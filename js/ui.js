@@ -21,17 +21,17 @@ ui.update = function (level) {
 		$('#gameBoard').append('<tr></tr>');
 		for (var j = 0; j < level.mapW[level.current]; j++) {
 			if (level.map[level.current][i][j] === '#') {
-				$('tr').eq(i).append('<td><img src="rock.png" alt="rock"></td>');
+				$('tr').eq(i).append('<td><img src="img/rock.png" alt="rock"></td>');
 			} else if (level.map[level.current][i][j] === '@') {
-				$('tr').eq(i).append('<td><img src="doodle.png" alt="doodle"></td>');
+				$('tr').eq(i).append('<td><img src="img/doodle.png" alt="doodle"></td>');
 			} else if (level.map[level.current][i][j] === '*') {
-				$('tr').eq(i).append('<td><img src="bomb.png" alt="bomb"></td>');
+				$('tr').eq(i).append('<td><img src="img/bomb.png" alt="bomb"></td>');
 			} else if (level.map[level.current][i][j] === '$') {
-				$('tr').eq(i).append('<td><img src="money.png" alt="money"></td>');
+				$('tr').eq(i).append('<td><img src="img/money.png" alt="money"></td>');
 			} else if (level.map[level.current][i][j] === '.') {
-				$('tr').eq(i).append('<td><img src="footprint.png" alt="footprint"></td>');
+				$('tr').eq(i).append('<td><img src="img/footprint.png" alt="footprint"></td>');
 			} else {
-				$('tr').eq(i).append('<td><img src="grass.gif" alt="grass"></td>');
+				$('tr').eq(i).append('<td><img src="img/grass.gif" alt="grass"></td>');
 			}
 		}
 	}
