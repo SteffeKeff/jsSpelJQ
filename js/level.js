@@ -6,10 +6,10 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
-var level = {};
-level.map = [];
-level.mapH = [];
-level.mapW = [];
-level.playerStartX = [];
-level.playerStartY = [];
-level.current = 0;
+var originLevel = {};
+originLevel.map = [];
+originLevel.mapH = [];
+originLevel.mapW = [];
+originLevel.playerStartX = [];
+originLevel.playerStartY = [];
+originLevel.current = 0;

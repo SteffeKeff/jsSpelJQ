@@ -48,21 +48,58 @@ logic.setVisited = function () {
 
 
 logic.gameLost = function () {
-    level.current = 0;
+    $(window).off('keydown');
+    runTime = false;
+    start = false;
     player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
-    $('#game').hide();
-    $('#menu').show();
-    ui.update(level.toString(level.current));
+    $('#game').append('<button id="next" class="center myButton">To Menu</button>');
+    $('#next').on('click', function () {
+        level.current = 0;
+        time = '0.00';
+        $('#timer').remove();
+        $('#next').remove();
+        $('#game').hide();
+        $('#menu').show();
+        level = jQuery.extend(true, {}, originLevel);
+    });
 };
 
 logic.gameWon = function () {
-    player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
-    if (level.current !== level.map.length - 1) {
-        level.current++;
+    $(window).off('keydown');
+    console.log(time);
+    start = false;
+    runTime = false;
+    if (parseInt(level.current) !== (level.map.length - 1)) {
+        $('#game').append('<button id="next" class="center myButton">Next level</button>');
+        $('#next').on('click', function () {
+            level.current++;
+            time = '0.00';
+            $('#timer').text('Timer: 0.00');
+            player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+            $('#next').remove();
+            ui.update(level);
+            $(window).on('keydown', function (e) {
+                if (!start) {
+                    d1 = new Date();
+                    t1 = d1.getTime();
+                    start = true;
+                    runTime = true;
+                }
+                logic.askMoveLocation(e.keyCode);
+                ui.update(level);
+            });
+        });
     } else {
-        level.current = 0;
-        $('#game').hide();
-        $('#menu').show();
+        $('#game').append('<button id="next" class="center myButton">To Menu</button>');
+        $('#next').on('click', function () {
+            level.current = 0;
+            time = '0.00';
+            level = jQuery.extend(true, {}, originLevel);
+            $('#timer').text('Timer: 0.00');
+            $('#next').remove();
+            $('#game').hide();
+            $('#menu').show();
+        });
     }
 };
 

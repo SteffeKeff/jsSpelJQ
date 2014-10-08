@@ -54,6 +54,11 @@ table{
 	color:red;
 	margin:5px;
 }
+#level{
+	height: 38px;
+	width: 130px;
+	margin-top: 10px;
+}
 .center{
 	margin-right:auto;
 	margin-left:auto;

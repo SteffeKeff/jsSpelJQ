@@ -6,10 +6,10 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
-level.mapH.push(11);
-level.mapW.push(32);
-level.playerStartX.push(15);
-level.playerStartY.push(9);
+originLevel.mapH.push(11);
+originLevel.mapW.push(32);
+originLevel.playerStartX.push(15);
+originLevel.playerStartY.push(9);
 var addToLevel = [];
 addToLevel.push('################################'); //0
 addToLevel.push('#              $               #'); //1
@@ -22,4 +22,4 @@ addToLevel.push('#                              #'); //7
 addToLevel.push('#                              #'); //8
 addToLevel.push('#              @               #'); //9
 addToLevel.push('################################'); //10
-level.map.push(addToLevel); //level.map[1][rowY][charX]
+originLevel.map.push(addToLevel); //level.map[1][rowY][charX]
