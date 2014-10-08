@@ -42,6 +42,10 @@ button{
 	margin-top:10px;
 	display:block;
 }
+#invalid{
+	color:red;
+	margin:5px;
+}
 .center{
 	margin-right:auto;
 	margin-left:auto;

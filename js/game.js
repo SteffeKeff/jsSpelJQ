@@ -16,7 +16,8 @@ $(function () {
 	$('#play').on('click', function () {
 		player.name = $('#name').val().trim();
 		if (player.name === '') {
-			alert('your name is not valid');
+			$('#invalid').text('your name is not valid');
+			//alert('your name is not valid');
 		} else {
 			$('#menu').hide();
 			$('#player-name').text('Player name: ' + player.name);
