@@ -48,39 +48,21 @@ logic.setVisited = function () {
 
 
 logic.gameLost = function () {
-    level.current = 1;
+    level.current = 0;
+    player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+    $('#game').hide();
+    $('#menu').show();
     ui.update(level.toString(level.current));
-}
+};
 
 logic.gameWon = function () {
-    //level.current++;
-    //player.setStartPos(level.getPlayerStartX[current], level.getPlayerStartY[current]);
-    level.current = 3;
-    var animationFrame = 0;
-    var animationRepeatCount = 0;
-    while (animationRepeatCount < 10) {
-        if (animationFrame == 0) {
-            level.map[level.current][1] = '#                          .  @     #';
-            level.map[level.current][2] = '#                           .....   #';
-            level.map[level.current][3] = '#                             .  .  #';
-            level.map[level.current][4] = '# if(game === won){          ...    #';
-            level.map[level.current][5] = '#     player.happy = true;   . .    #';
-            level.map[level.current][6] = '# }else if(game === lose){  .. ..   #';
-        } else if (animationFrame == 1) {
-            level.map[level.current][1] = '#                             @  .  #';
-            level.map[level.current][2] = '#                           .....   #';
-            level.map[level.current][3] = '#                          .  .     #';
-            level.map[level.current][4] = '# if(game === won){          ...    #';
-            level.map[level.current][5] = '#     player.happy = true;   . .    #';
-            level.map[level.current][6] = '# }else if(game === lose){  .. ..   #';
-        }
-        ui.update(level.current);
-        logic.sleep(1000);
-        animationFrame++;
-        if (animationFrame > 1) {
-            animationFrame = 0;
-            animationRepeatCount++;
-        }
+    player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+    if (level.current !== level.map.length - 1) {
+        level.current++;
+    } else {
+        level.current = 0;
+        $('#game').hide();
+        $('#menu').show();
     }
 };
 

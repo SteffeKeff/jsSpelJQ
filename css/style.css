@@ -43,9 +43,12 @@ button{
 	display:block;
 }
 td{
-	width:17px;
-	height:15px;
+	width:28px;
+	height:28px;
 	padding:0;
+}
+table{
+	border-spacing: 0;
 }
 #invalid{
 	color:red;

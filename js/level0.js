@@ -7,19 +7,19 @@
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
 level.mapH.push(11);
-level.mapW.push(37);
-level.playerStartX.push(0);
-level.playerStartY.push(0);
+level.mapW.push(32);
+level.playerStartX.push(15);
+level.playerStartY.push(9);
 var addToLevel = [];
-addToLevel.push('#####################################'); //0
-addToLevel.push('#                                   #'); //1
-addToLevel.push('#    A     M   M     A    ZZZ  EEE  #'); //2
-addToLevel.push('#   AAA   M M M M   AAA    Z    EE  #'); //3
-addToLevel.push('#  A   A M   M   M A   A  ZZZ  EEE  #'); //4
-addToLevel.push('#                                   #'); //5
-addToLevel.push('#   Välkommen till vårat demospel!  #'); //6
-addToLevel.push('#    Du är tecknet "@"som skall     #'); //7
-addToLevel.push('#    till tecknet "$", men se       #'); //8
-addToLevel.push('#    upp för bomberna "*"!          #'); //9
-addToLevel.push('#####################################'); //10
+addToLevel.push('################################'); //0
+addToLevel.push('#              $               #'); //1
+addToLevel.push('#                              #'); //2
+addToLevel.push('#                              #'); //3
+addToLevel.push('#                              #'); //4
+addToLevel.push('#                              #'); //5
+addToLevel.push('#                              #'); //6
+addToLevel.push('#                              #'); //7
+addToLevel.push('#                              #'); //8
+addToLevel.push('#              @               #'); //9
+addToLevel.push('################################'); //10
 level.map.push(addToLevel);

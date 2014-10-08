@@ -5,10 +5,11 @@
 // Modified:    2014-09-29
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
+var t1, t2, d1, d2, time, playing;
 $(function () {
 	'use strict';
-	level.current = 2;
-	var runMain = false;
+	level.current = 0;
+	playing = false;
 	player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
 	$('#play').on('click', function () {
 		player.name = $('#name').val().trim();
@@ -22,9 +23,24 @@ $(function () {
 			$('#game').append('<table id="gameBoard"></table>');
 			$('#gameBoard').addClass('center');
 			ui.update(level);
-			$('#game').append('<p id="keyCode"></p>');
+			$('#game').append('<p id="timer">Timer: </p>');
+			var myTimer = function () {
+				d2 = new Date();
+				t2 = d2.getTime();
+				time = (((t2 - t1) / 1000)).toFixed(2);
+				if (t1 !== undefined) {
+					$("#timer").text('Timer: ' + time);
+				}
+			};
+			var myVar = setInterval(function () {
+				myTimer();
+			}, 100);
 			$(window).on('keydown', function (e) {
-				$('#keyCode').text(e.keyCode);
+				if (!playing) {
+					d1 = new Date();
+					t1 = d1.getTime();
+					playing = true;
+				}
 				logic.askMoveLocation(e.keyCode);
 				ui.update(level);
 			});
