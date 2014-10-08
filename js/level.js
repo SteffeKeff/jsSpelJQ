@@ -13,12 +13,10 @@ level.mapW = [];
 level.playerStartX = [];
 level.playerStartY = [];
 level.current = 0;
-level.toString = function (levelNum)
-{
-        var str = "";
-        for (var i = 0; i < level.mapH[levelNum]; i++)
-        {
-                str += level.map[levelNum][i] + '\n';
-        }
-        return str;
+level.toString = function (levelNum) {
+	var str = "";
+	for (var i = 0; i < level.mapH[levelNum]; i++) {
+		str += level.map[levelNum][i] + '\n';
+	}
+	return str;
 };

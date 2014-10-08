@@ -7,19 +7,15 @@
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
 var ui = {};
-ui.input = function (ask)
-{
+ui.input = function (ask) {
 	return prompt(ask);
 };
-ui.output = function (tell)
-{
+ui.output = function (tell) {
 	console.log(tell);
 };
-ui.clear = function ()
-{
+ui.clear = function () {
 	console.clear();
 };
-ui.popup = function (tell)
-{
+ui.popup = function (tell) {
 	alert(tell);
 };

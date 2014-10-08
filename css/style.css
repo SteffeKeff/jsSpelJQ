@@ -3,6 +3,9 @@ html, body, section, main
     height: 100%;
     margin: 0;
 }
+html{ /*För att inte scrollas ned på sidan när man använder arrow keys*/
+	overflow-y: hidden; 
+}
 body{
 	margin-top:-28px;
 }
@@ -25,15 +28,14 @@ input{
 }
 main{
 	text-align:center;
-	padding-top:5px;
 }
 h1{
 	text-align: center;
 	padding: 10px;
 	font-size:42px;
 }
-h3{
-	margin-top:20px;
+h3, #player-name{
+	padding-top:20px;
 	margin-bottom:5px;
 }
 button{
