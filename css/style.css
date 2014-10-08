@@ -59,6 +59,14 @@ table{
 	width: 130px;
 	margin-top: 10px;
 }
+#buttons{
+	margin-top:50px;
+}
+#button-up{
+	position: absolute;
+	margin-top: -50px;
+	margin-left: 450px;
+}
 .center{
 	margin-right:auto;
 	margin-left:auto;
@@ -101,3 +109,26 @@ table{
 .hidden{
 	display:none;
 }
+.arrow-key {
+	background-color:#44c767;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.arrow-key:hover {
+	background-color:#5cbf2a;
+}
+.arrow-key:active {
+	position:relative;
+	top:1px;
+}
+
