@@ -62,15 +62,53 @@ logic.gameLost = function () {
         $('#menu').show();
         level = jQuery.extend(true, {}, originLevel);
     });
+    $(window).on('keypress', function (e) {
+        if (e.keyCode === 13) {
+            $(window).off('keypress');
+            level.current = 0;
+            time = '0.00';
+            $('#timer').remove();
+            $('#next').remove();
+            $('#game').hide();
+            $('#menu').show();
+            level = jQuery.extend(true, {}, originLevel);
+        }
+    });
 };
 
 logic.gameWon = function () {
+    if (highscore[level.current] === undefined || highscore[level.current][0] > parseFloat(time)) {
+        highscore[level.current][0] = parseFloat(time).toFixed(2);
+        highscore[level.current][1] = 'by ' + player.name;
+        $('#highscore').text('Highscore: ' + highscore[level.current]);
+    }
     $(window).off('keydown');
     console.log(time);
     start = false;
     runTime = false;
     if (parseInt(level.current) !== (level.map.length - 1)) {
         $('#game').append('<button id="next" class="center myButton">Next level</button>');
+        $(window).on('keypress', function (e) {
+            if (e.keyCode === 13) {
+                level.current++;
+                time = '0.00';
+                $('#timer').text('Timer: 0.00');
+                player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+                $('#next').remove();
+                ui.update(level);
+                $(window).off('keypress');
+                $(window).on('keydown', function (e) {
+                    if (!start) {
+                        d1 = new Date();
+                        t1 = d1.getTime();
+                        start = true;
+                        runTime = true;
+                    }
+                    logic.askMoveLocation(e.keyCode);
+                    ui.update(level);
+                });
+            }
+        });
         $('#next').on('click', function () {
             level.current++;
             time = '0.00';
@@ -78,6 +116,7 @@ logic.gameWon = function () {
             player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
             $('#next').remove();
             ui.update(level);
+            level = jQuery.extend(true, {}, originLevel);
             $(window).on('keydown', function (e) {
                 if (!start) {
                     d1 = new Date();
@@ -99,6 +138,18 @@ logic.gameWon = function () {
             $('#next').remove();
             $('#game').hide();
             $('#menu').show();
+        });
+        $(window).on('keypress', function (e) {
+            if (e.keyCode === 13) {
+                level.current = 0;
+                time = '0.00';
+                level = jQuery.extend(true, {}, originLevel);
+                $(window).off('keypress');
+                $('#timer').remove();
+                $('#next').remove();
+                $('#game').hide();
+                $('#menu').show();
+            }
         });
     }
 };

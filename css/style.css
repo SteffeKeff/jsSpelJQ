@@ -62,11 +62,6 @@ table{
 #buttons{
 	margin-top:50px;
 }
-#button-up{
-	position: absolute;
-	margin-top: -50px;
-	margin-left: 450px;
-}
 .center{
 	margin-right:auto;
 	margin-left:auto;

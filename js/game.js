@@ -6,6 +6,10 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 var t1, t2, d1, d2, time, start, runTime, level;
+var highscore = [
+	[],
+	[]
+];
 level = jQuery.extend(true, {}, originLevel); //copy the originLevel to level
 //check if mobile user
 var mobile = $.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
@@ -32,6 +36,8 @@ $(function () {
 		if (player.name === '') {
 			$('#invalid').text('your name is not valid');
 		} else {
+			level = jQuery.extend(true, {}, originLevel); //copy the originLevel to level
+			player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
 			time = 0;
 			$('#invalid').text('');
 			$('#menu').fadeOut();
@@ -41,26 +47,35 @@ $(function () {
 			$('#gameBoard').addClass('center');
 			ui.update(level);
 			$('#game').append('<p id="timer">Timer: 0.00</p>');
-			if (mobile) {
-				$('#game').append('<div id="buttons"></div>');
-				$('#buttons').append('<button id="button-up" class="arrow-key">⇡</button>');
-				$('#buttons').append('<button id="button-left" class="arrow-key">⇠</button>');
-				$('#buttons').append('<button id="button-down" class="arrow-key">⇣</button>');
-				$('#buttons').append('<button id="button-right" class="arrow-key">⇢</button>');
-				$('#button-left').on('click', function () {
-					click(37);
-				});
-				$('#button-right').on('click', function () {
-					console.log('right');
-					click(39);
-				});
-				$('#button-up').on('click', function () {
-					console.log('up');
-					click(38);
-				});
-				$('#button-down').on('click', function () {
-					click(40);
-				});
+			highscore[0][0] = 10;
+			highscore[0][1] = 'by Stefan';
+			if (highscore[level.current] === undefined) {
+				$('#game').append('<p id="highscore">Highscore: None 0.00</p>');
+			} else {
+				$('#game').append('<p id="highscore">Highscore: ' + highscore[level.current] + '</p>');
+			}
+			if ($('#buttons').length === 0) { //Check if buttons already exists
+				if (mobile) {
+					$('#game').append('<div id="buttons"></div>');
+					$('#buttons').append('<button id="button-up" class="arrow-key">⇡</button>');
+					$('#buttons').append('<button id="button-left" class="arrow-key">⇠</button>');
+					$('#buttons').append('<button id="button-down" class="arrow-key">⇣</button>');
+					$('#buttons').append('<button id="button-right" class="arrow-key">⇢</button>');
+					$('#button-left').on('click', function () {
+						click(37);
+					});
+					$('#button-right').on('click', function () {
+						console.log('right');
+						click(39);
+					});
+					$('#button-up').on('click', function () {
+						console.log('up');
+						click(38);
+					});
+					$('#button-down').on('click', function () {
+						click(40);
+					});
+				}
 			}
 			var myTimer = function () {
 				if (runTime) {
