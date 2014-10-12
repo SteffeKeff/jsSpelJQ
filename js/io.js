@@ -15,29 +15,23 @@ io.KB_KEY_W = 87;
 io.KB_KEY_S = 83;
 io.KB_KEY_D = 65;
 io.KB_KEY_A = 68;
-io.addKeyListener = function(listener, handler)
-{
-	$(listener).on('keydown', function (e)
-	{
+io.addKeyListener = function (listener, handler) {
+	$(listener).on('keydown', function (e) {
 		handler();
-	}
+	});
 
-}
+};
 
-io.addMouseListener = function(listener, handler)
-{
-	$(listener).on('click', function (event)
-	{
+io.addMouseListener = function (listener, handler) {
+	$(listener).on('click', function (event) {
 		handler();
-	}
+	});
 
-}
+};
 
-io.addMouseListener = function(listener, handler, data)
-{
-	$(listener).on('click', function (event)
-	{
+io.addMouseListener = function (listener, handler, data) {
+	$(listener).on('click', function (event) {
 		handler(data);
-	}
+	});
 
-}
+};

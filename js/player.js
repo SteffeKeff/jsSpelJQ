@@ -13,10 +13,9 @@ player.setStartPos = function (posX, posY) {
 	player.x = posX;
 	player.y = posY;
 };
-player.setStartPosFromLevel = function()
-{
+player.setStartPosFromLevel = function () {
 	player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
-}
+};
 player.moveLeft = function () {
 	player.x--;
 };
