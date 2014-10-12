@@ -53,15 +53,15 @@ logic.movement.movePlayer = function (where) {
 
 };
 logic.movement.collision = function (posX, posY) {
-    if (level.map[level.current][posY][posX] == '*' ||
-        level.map[level.current][posY][posX] == '#' ||
-        level.map[level.current][posY][posX] == '$') {
+    if (playlevel.map[playlevel.current][posY][posX] == '*' ||
+        playlevel.map[playlevel.current][posY][posX] == '#' ||
+        playlevel.map[playlevel.current][posY][posX] == '$') {
         return true;
     }
     return false;
 };
 logic.movement.getCollisionItem = function (posX, posY) {
-    return level.map[level.current][posY][posX];
+    return playlevel.map[playlevel.current][posY][posX];
 };
 logic.movement.handleCollision = function (posX, posY) {
     var collisionIntem = logic.movement.getCollisionItem(posX, posY);

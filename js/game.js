@@ -87,7 +87,7 @@ $(function () {
 					runTime = true;
 				}
 				logic.askMoveLocation(e.keyCode);
-				ui.update(level);
+				ui.update(playlevel);
 			});
 		}
 	});
