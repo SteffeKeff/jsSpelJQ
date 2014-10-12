@@ -20,7 +20,7 @@ ui.update = function (playlevel) {
 			if (playlevel.map[playlevel.current][i][j] === '#') {
 				$('tr').eq(i).append('<td><img src="img/rock.png" alt="rock"></td>');
 			} else if (playlevel.map[playlevel.current][i][j] === '@') {
-				$('tr').eq(i).append('<td><img src="img/doodle.png" alt="doodle"></td>');
+				$('tr').eq(i).append('<td><img src="img/player.png" alt="player"></td>');
 			} else if (playlevel.map[playlevel.current][i][j] === '*') {
 				$('tr').eq(i).append('<td><img src="img/bomb.png" alt="bomb"></td>');
 			} else if (playlevel.map[playlevel.current][i][j] === '$') {
