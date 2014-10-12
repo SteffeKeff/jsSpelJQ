@@ -56,7 +56,6 @@ logic.gameLost = function () {
     $('#next').on('click', function () {
         playlevel.current = 0;
         time = '0.00';
-        $('#timer').remove();
         $('#next').remove();
         $('#game').hide();
         $('#menu').show();
@@ -67,7 +66,6 @@ logic.gameLost = function () {
             $(window).off('keypress');
             playlevel.current = 0;
             time = '0.00';
-            $('#timer').remove();
             $('#next').remove();
             $('#game').hide();
             $('#menu').show();
@@ -139,7 +137,6 @@ logic.gameWon = function () {
                 time = '0.00';
                 playlevel = jQuery.extend(true, {}, level);
                 $(window).off('keypress');
-                $('#timer').remove();
                 $('#next').remove();
                 $('#game').hide();
                 $('#menu').show();

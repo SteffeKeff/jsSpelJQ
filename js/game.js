@@ -39,10 +39,8 @@ $(function () {
 			$('#menu').fadeOut();
 			$('#player-name').text('Player name: ' + player.name);
 			$('#game').show();
-			$('#game').append('<table id="gameBoard"></table>');
 			$('#gameBoard').addClass('center');
 			ui.update(playlevel);
-			$('#game').append('<p id="timer">Timer: 0.00</p>');
 			if ($('#buttons').length === 0) { //Check if buttons already exists
 				if (ui.isMobile()) {
 					$('#game').append('<div id="buttons"></div>');
