@@ -33,3 +33,10 @@ ui.update = function (playlevel) {
 		}
 	}
 };
+ui.fillList = function(id, length, text)
+{
+	for (var i = 0; i < length; i++) 
+	{
+  		$(id).append('<option value="' + i + '">'+ text + (i + 1) + ' </option>');
+ 	}
+}

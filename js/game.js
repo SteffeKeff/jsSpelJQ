@@ -21,7 +21,9 @@ game.update = function () {
 	logic.askMoveLocation(e.keyCode);
 	ui.update(playlevel);
 };
-ui.fillList('#level', playlevel.map.length, 'Level');
+io.addKeyListener(window, game.update);
+
+ui.fillList('#level', game.playlevel.map.length, 'Level');
 player.setStartPosFromLevel();
 
 
