@@ -26,7 +26,7 @@ $(function () {
 	};
 	start = false;
 	player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
-	$('#play').on('click', function () {
+	$('#play-button').on('click', function () {
 		player.name = $('#name').val().trim();
 		if (player.name === '') {
 			$('#invalid').text('your name is not valid');
@@ -90,5 +90,13 @@ $(function () {
 				ui.update(playlevel);
 			});
 		}
+	});
+	$('#tutorial-button').on('click', function () {
+		$('#menu').fadeOut();
+		$('#tutorial').show();
+		$('#next').on('click', function () {
+			$('#tutorial').fadeOut();
+			$('#menu').fadeIn();
+		});
 	});
 });

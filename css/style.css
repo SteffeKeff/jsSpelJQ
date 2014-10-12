@@ -59,6 +59,9 @@ table{
 	width: 130px;
 	margin-top: 10px;
 }
+#tutorial-text{
+	padding-top:20px;
+}
 .center{
 	margin-right:auto;
 	margin-left:auto;
