@@ -49,8 +49,7 @@ logic.setVisited = function () {
 
 logic.gameLost = function () {
     $(window).off('keydown');
-    runTime = false;
-    start = false;
+    game.runTime = false;
     player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
     $('#game').append('<button id="next" class="center myButton">To Menu</button>');
     $('#next').on('click', function () {

@@ -14,6 +14,7 @@ game.playlevel = level.getCopy();
 game.runTime = false;
 
 game.update = function (keycode) {
+	$('#timer').text('Timer: ' + timer.time());
 	if (!game.runTime) {
 		timer.start();
 		game.runTime = true;
@@ -39,14 +40,11 @@ game.run = function () {
 		game.playlevel = level.getCopy();
 		game.playlevel.current = $('#level').val();
 		player.setStartPosFromLevel();
-		timer.stop();
 		$('#invalid').text('');
 		$('#menu').fadeOut();
 		$('#player-name').text('Player name: ' + player.name);
 		$('#game').show();
 		$('#gameBoard').addClass('center');
-		ui.update(game.playlevel);
-
 		if (ui.isMobile()) {
 			$('#buttons').show();
 			$('#button-left').on('click', function () {
@@ -64,30 +62,8 @@ game.run = function () {
 				click(40);
 			});
 		}
+		game.update();
 	}
-	var myTimer = function () {
-		if (runTime) {
-			d2 = new Date();
-			t2 = d2.getTime();
-			time = (((t2 - t1) / 1000)).toFixed(2);
-		}
-		if (t1 !== undefined) {
-			$("#timer").text('Timer: ' + time);
-		}
-	};
-	var myVar = setInterval(function () {
-		myTimer();
-	}, 100);
-	$(window).on('keydown', function (e) {
-		if (!start) {
-			d1 = new Date();
-			t1 = d1.getTime();
-			start = true;
-			runTime = true;
-		}
-		logic.askMoveLocation(e.keyCode);
-		ui.update(game.playlevel);
-	});
 };
 game.tutorial = function () {
 	$('#menu').fadeOut();
