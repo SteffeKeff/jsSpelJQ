@@ -6,10 +6,11 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
-var originLevel = {};
-originLevel.map = [];
-originLevel.mapH = [];
-originLevel.mapW = [];
-originLevel.playerStartX = [];
-originLevel.playerStartY = [];
-originLevel.current = 0;
+var level = {};
+level.map = [];
+level.mapH = [];
+level.mapW = [];
+level.playerStartX = [];
+level.playerStartY = [];
+level.current = 0;
+level.getCopy = function(levelNum){return jQuery.extend(true, {}, level);}

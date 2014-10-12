@@ -7,12 +7,7 @@
 /////////////////////////////////////////////////////////////////////////////
 'use strict';
 var ui = {};
-ui.input = function (ask) {
-	return prompt(ask);
-};
-ui.output = function (tell) {
-	console.log(tell);
-};
+ui.isMobile = function(){screen.width <= 768};
 ui.update = function (level) {
 	$('tr').each(function () {
 		$(this).remove();

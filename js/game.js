@@ -5,17 +5,13 @@
 // Modified:    2014-09-29
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
-var t1, t2, d1, d2, time, start, runTime, level;
-var highscore = [
-	[],
-	[]
-];
-level = jQuery.extend(true, {}, originLevel); //copy the originLevel to level
-//check if mobile user
-var mobile = $.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+
+var t1, t2, d1, d2, time, start, runTime;
+
+var playlevel = level.getCopy();
 $(function () {
 	'use strict';
-	for (var i = 0; i < level.map.length; i++) {
+	for (var i = 0; i < playlevel.map.length; i++) {
 		$('#level').append('<option value="' + i + '">Level ' + (i + 1) + '</option>');
 	}
 	var click = function (button) {
@@ -26,18 +22,18 @@ $(function () {
 			runTime = true;
 		}
 		logic.askMoveLocation(button);
-		ui.update(level);
+		ui.update(playlevel);
 	};
 	start = false;
-	player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+	player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 	$('#play').on('click', function () {
-		level.current = $('#level').val();
+		playlevel.current = $('#level').val();
 		player.name = $('#name').val().trim();
 		if (player.name === '') {
 			$('#invalid').text('your name is not valid');
 		} else {
-			level = jQuery.extend(true, {}, originLevel); //copy the originLevel to level
-			player.setStartPos(level.playerStartX[level.current], level.playerStartY[level.current]);
+			playlevel = jQuery.extend(true, {}, level); //copy the originLevel to level
+			player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 			time = 0;
 			$('#invalid').text('');
 			$('#menu').fadeOut();
@@ -45,17 +41,10 @@ $(function () {
 			$('#game').show();
 			$('#game').append('<table id="gameBoard"></table>');
 			$('#gameBoard').addClass('center');
-			ui.update(level);
+			ui.update(playlevel);
 			$('#game').append('<p id="timer">Timer: 0.00</p>');
-			highscore[0][0] = 10;
-			highscore[0][1] = 'by Stefan';
-			if (highscore[level.current] === undefined) {
-				$('#game').append('<p id="highscore">Highscore: None 0.00</p>');
-			} else {
-				$('#game').append('<p id="highscore">Highscore: ' + highscore[level.current] + '</p>');
-			}
 			if ($('#buttons').length === 0) { //Check if buttons already exists
-				if (mobile) {
+				if (ui.isMobile) {
 					$('#game').append('<div id="buttons"></div>');
 					$('#buttons').append('<button id="button-up" class="arrow-key">⇡</button>');
 					$('#buttons').append('<button id="button-left" class="arrow-key">⇠</button>');
