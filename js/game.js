@@ -13,16 +13,14 @@ var game = {};
 game.playlevel = level.getCopy();
 game.runTime = false;
 
-game.update = function()
-{
-	if(!game.runTime)
-	{
+game.update = function () {
+	if (!game.runTime) {
 		timer.start();
 		game.runTime = true;
 	}
 	logic.askMoveLocation(e.keyCode);
 	ui.update(playlevel);
-}
+};
 ui.fillList('#level', playlevel.map.length, 'Level');
 player.setStartPosFromLevel();
 
