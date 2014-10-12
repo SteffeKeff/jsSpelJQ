@@ -31,23 +31,29 @@
 			<section id='menu' class='center'>
 				<h3>Enter your name</h3>
 				<input id='name' type='text' placeholder='name'>
-				<p id="invalid">&nbsp;</p>
+				<p id='invalid'>&nbsp;</p>
 				<button id='play-button' class='center myButton'>Play game</button>
 				<select id='level' class='center myButton'></select>
 				<button id='tutorial-button' class='center myButton'>Tutorial</button>
 			</section>
 			<section id='game' class='hidden'>
 				<p id ='player-name'></p>
-				<table id="gameBoard"></table>
-				<p id="timer">Timer: 0.00</p>
+				<table id='gameBoard'></table>
+				<p id='timer'>Timer: 0.00</p>
+				<div id='buttons' class='hidden'>
+					<button id='button-up' class='arrow-key'>⇡</button>
+					<button id='button-left' class='arrow-key'>⇠</button>
+					<button id='button-down' class='arrow-key'>⇣</button>
+					<button id='button-right' class='arrow-key'>⇢</button>
+				</div>
 			</section>
 			<section id='tutorial' class='hidden'>
 				<h3>Welcome to Amaze</h3>
-				<p>You are playing as this character<img src="img/doodle.png" alt="doodle"></p>
-				<p>and the goal of Amaze is to reach the treasure<img src="img/money.png" alt="money"></p>
-				<p>You can not walk through rocks<img src="img/rock.png" alt="rock"></p>
-				<p>and you will lose the game if you walk on a bomb! <img src="img/bomb.png" alt="bomb"></p>
-				<button id="next" class="center myButton">To Menu</button>
+				<p>You are playing as this character<img src='img/doodle.png' alt='doodle'></p>
+				<p>and the goal of Amaze is to reach the treasure<img src='img/money.png' alt='money'></p>
+				<p>You can not walk through rocks<img src='img/rock.png' alt='rock'></p>
+				<p>and you will lose the game if you walk on a bomb! <img src='img/bomb.png' alt='bomb'></p>
+				<button id='next' class='center myButton'>To Menu</button>
 			</section>
 		</main>
 	</body>

@@ -41,28 +41,22 @@ $(function () {
 			$('#game').show();
 			$('#gameBoard').addClass('center');
 			ui.update(playlevel);
-			if ($('#buttons').length === 0) { //Check if buttons already exists
-				if (ui.isMobile()) {
-					$('#game').append('<div id="buttons"></div>');
-					$('#buttons').append('<button id="button-up" class="arrow-key">⇡</button>');
-					$('#buttons').append('<button id="button-left" class="arrow-key">⇠</button>');
-					$('#buttons').append('<button id="button-down" class="arrow-key">⇣</button>');
-					$('#buttons').append('<button id="button-right" class="arrow-key">⇢</button>');
-					$('#button-left').on('click', function () {
-						click(37);
-					});
-					$('#button-right').on('click', function () {
-						console.log('right');
-						click(39);
-					});
-					$('#button-up').on('click', function () {
-						console.log('up');
-						click(38);
-					});
-					$('#button-down').on('click', function () {
-						click(40);
-					});
-				}
+			if (ui.isMobile()) {
+				$('#buttons').show();
+				$('#button-left').on('click', function () {
+					click(37);
+				});
+				$('#button-right').on('click', function () {
+					console.log('right');
+					click(39);
+				});
+				$('#button-up').on('click', function () {
+					console.log('up');
+					click(38);
+				});
+				$('#button-down').on('click', function () {
+					click(40);
+				});
 			}
 			var myTimer = function () {
 				if (runTime) {
