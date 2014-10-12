@@ -27,12 +27,12 @@ $(function () {
 	start = false;
 	player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 	$('#play').on('click', function () {
-		playlevel.current = $('#level').val();
 		player.name = $('#name').val().trim();
 		if (player.name === '') {
 			$('#invalid').text('your name is not valid');
 		} else {
 			playlevel = jQuery.extend(true, {}, level); //copy the originLevel to level
+			playlevel.current = $('#level').val();
 			player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 			time = 0;
 			$('#invalid').text('');

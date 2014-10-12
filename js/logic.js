@@ -82,7 +82,7 @@ logic.gameWon = function () {
     start = false;
     runTime = false;
     if (parseInt(playlevel.current) !== (playlevel.map.length - 1)) {
-        $('#game').append('<button id="next" class="center myButton">Next playlevel</button>');
+        $('#game').append('<button id="next" class="center myButton">Next level</button>');
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
                 playlevel.current++;
