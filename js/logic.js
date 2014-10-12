@@ -54,7 +54,6 @@ logic.gameLost = function () {
     $('#game').append('<button id="next" class="center myButton">To Menu</button>');
     $('#next').on('click', function () {
         game.playlevel.current = 0;
-        time = '0.00';
         $('#next').remove();
         $('#game').hide();
         $('#menu').show();
@@ -64,7 +63,6 @@ logic.gameLost = function () {
         if (e.keyCode === 13) {
             $(window).off('keypress');
             game.playlevel.current = 0;
-            time = '0.00';
             $('#next').remove();
             $('#game').hide();
             $('#menu').show();
@@ -75,55 +73,37 @@ logic.gameLost = function () {
 
 logic.gameWon = function () {
     $(window).off('keydown');
-    start = false;
-    runTime = false;
+    game.runTime = false;
     if (parseInt(game.playlevel.current) !== (game.playlevel.map.length - 1)) {
         $('#game').append('<button id="next" class="center myButton">Next level</button>');
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
                 game.playlevel.current++;
-                time = '0.00';
                 $('#timer').text('Timer: 0.00');
                 player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
                 $('#next').remove();
                 ui.update(game.playlevel);
                 $(window).off('keypress');
                 $(window).on('keydown', function (e) {
-                    if (!start) {
-                        d1 = new Date();
-                        t1 = d1.getTime();
-                        start = true;
-                        runTime = true;
-                    }
-                    logic.askMoveLocation(e.keyCode);
-                    ui.update(game.playlevel);
+                    game.update(e.keyCode);
                 });
             }
         });
         $('#next').on('click', function () {
             game.playlevel.current++;
-            time = '0.00';
             $('#timer').text('Timer: 0.00');
             player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
             $('#next').remove();
             ui.update(game.playlevel);
             $(window).off('keypress');
             $(window).on('keydown', function (e) {
-                if (!start) {
-                    d1 = new Date();
-                    t1 = d1.getTime();
-                    start = true;
-                    runTime = true;
-                }
-                logic.askMoveLocation(e.keyCode);
-                ui.update(game.playlevel);
+                game.update(e.keyCode);
             });
         });
     } else {
         $('#game').append('<button id="next" class="center myButton">To Menu</button>');
         $('#next').on('click', function () {
             game.playlevel.current = 0;
-            time = '0.00';
             game.playlevel = jQuery.extend(true, {}, level);
             $('#timer').text('Timer: 0.00');
             $('#next').remove();
@@ -133,7 +113,6 @@ logic.gameWon = function () {
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
                 game.playlevel.current = 0;
-                time = '0.00';
                 game.playlevel = jQuery.extend(true, {}, level);
                 $(window).off('keypress');
                 $('#next').remove();

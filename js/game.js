@@ -6,15 +6,14 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 
-var t1, t2, d1, d2, time, start, runTime;
-
-
 var game = {};
 game.playlevel = level.getCopy();
 game.runTime = false;
 
 game.update = function (keycode) {
-	$('#timer').text('Timer: ' + timer.time());
+	setInterval(function () {
+		$('#timer').text('Timer: ' + timer.time());
+	}, 100);
 	if (!game.runTime) {
 		timer.start();
 		game.runTime = true;
