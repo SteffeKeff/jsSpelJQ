@@ -8,23 +8,29 @@
 
 var t1, t2, d1, d2, time, start, runTime;
 
-var playlevel = level.getCopy();
+
+var game = {};
+game.playlevel = level.getCopy();
+game.runTime = false;
+
+game.update = function()
+{
+	if(!game.runTime)
+	{
+		timer.start();
+		game.runTime = true;
+	}
+	logic.askMoveLocation(e.keyCode);
+	ui.update(playlevel);
+}
+ui.fillList('#level', playlevel.map.length, 'Level');
+player.setStartPosFromLevel();
+
+
 $(function () {
 	'use strict';
-	for (var i = 0; i < playlevel.map.length; i++) {
-		$('#level').append('<option value="' + i + '">Level ' + (i + 1) + '</option>');
-	}
-	var click = function (button) {
-		if (!start) {
-			d1 = new Date();
-			t1 = d1.getTime();
-			start = true;
-			runTime = true;
-		}
-		logic.askMoveLocation(button);
-		ui.update(playlevel);
-	};
-	start = false;
+
+	//player.setStartPosFromLevel();
 	player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 	$('#play-button').on('click', function () {
 		player.name = $('#name').val().trim();
