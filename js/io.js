@@ -17,7 +17,7 @@ io.KB_KEY_D = 65;
 io.KB_KEY_A = 68;
 io.addKeyListener = function (listener, handler) {
 	$(listener).on('keydown', function (e) {
-		handler();
+		handler(e.keyCode);
 	});
 
 };

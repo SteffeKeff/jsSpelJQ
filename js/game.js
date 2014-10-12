@@ -13,25 +13,74 @@ var game = {};
 game.playlevel = level.getCopy();
 game.runTime = false;
 
-game.update = function () {
+game.update = function (keycode) {
 	if (!game.runTime) {
 		timer.start();
 		game.runTime = true;
 	}
-	logic.askMoveLocation(e.keyCode);
+	logic.askMoveLocation(keyCode);
 	ui.update(playlevel);
 };
 io.addKeyListener(window, game.update);
+io.addMouseListener('#play-button',validateName);
+
 
 ui.fillList('#level', game.playlevel.map.length, 'Level');
 player.setStartPosFromLevel();
 
+game.validateName = function()
+{
+	player.name = $('#name').val().trim();
+		if (player.name === '')
+		{
+			$('#invalid').text('your name is not valid');
+			return false
+		}
+		else
+			return true;
+}
+
+game.run = function()
+{
+	if(game.validateName())
+	{
+		game.playlevel = level.getCopy();
+		playlevel.current = $('#level').val();
+		player.setStartPosFromLevel();
+		timer.stop();
+		$('#invalid').text('');
+		$('#menu').fadeOut();
+		$('#player-name').text('Player name: ' + player.name);
+		$('#game').show();
+		$('#gameBoard').addClass('center');
+		ui.update(game.playlevel);
+
+		if (ui.isMobile()) 
+		{
+			$('#buttons').show();
+			$('#button-left').on('click', function () {
+				click(37);
+			});
+			$('#button-right').on('click', function () {
+				console.log('right');
+				click(39);
+			});
+			$('#button-up').on('click', function () {
+				console.log('up');
+				click(38);
+			});
+			$('#button-down').on('click', function () {
+				click(40);
+			});
+		}
+	}
+}
 
 $(function () {
 	'use strict';
 
 	//player.setStartPosFromLevel();
-	player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
+	//player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 	$('#play-button').on('click', function () {
 		player.name = $('#name').val().trim();
 		if (player.name === '') {
