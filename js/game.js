@@ -44,7 +44,7 @@ $(function () {
 			ui.update(playlevel);
 			$('#game').append('<p id="timer">Timer: 0.00</p>');
 			if ($('#buttons').length === 0) { //Check if buttons already exists
-				if (ui.isMobile) {
+				if (ui.isMobile()) {
 					$('#game').append('<div id="buttons"></div>');
 					$('#buttons').append('<button id="button-up" class="arrow-key">⇡</button>');
 					$('#buttons').append('<button id="button-left" class="arrow-key">⇠</button>');

@@ -8,7 +8,7 @@
 'use strict';
 var ui = {};
 ui.isMobile = function () {
-	screen.width <= 768
+	return screen.width <= 768;
 };
 ui.update = function (playlevel) {
 	$('tr').each(function () {
@@ -32,4 +32,4 @@ ui.update = function (playlevel) {
 			}
 		}
 	}
-}
+};
