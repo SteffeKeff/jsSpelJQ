@@ -18,32 +18,24 @@ game.update = function (keycode) {
 		timer.start();
 		game.runTime = true;
 	}
-	logic.askMoveLocation(keyCode);
-	ui.update(playlevel);
+	logic.askMoveLocation(keycode);
+	ui.update(game.playlevel);
 };
 io.addKeyListener(window, game.update);
-io.addMouseListener('#play-button',validateName);
+io.addMouseListener('#play-button', game.validateName);
 
 
-ui.fillList('#level', game.playlevel.map.length, 'Level');
-player.setStartPosFromLevel();
-
-game.validateName = function()
-{
+game.validateName = function () {
 	player.name = $('#name').val().trim();
-		if (player.name === '')
-		{
-			$('#invalid').text('your name is not valid');
-			return false
-		}
-		else
-			return true;
-}
+	if (player.name === '') {
+		$('#invalid').text('your name is not valid');
+		return false;
+	} else
+		return true;
+};
 
-game.run = function()
-{
-	if(game.validateName())
-	{
+game.run = function () {
+	if (game.validateName()) {
 		game.playlevel = level.getCopy();
 		playlevel.current = $('#level').val();
 		player.setStartPosFromLevel();
@@ -55,8 +47,7 @@ game.run = function()
 		$('#gameBoard').addClass('center');
 		ui.update(game.playlevel);
 
-		if (ui.isMobile()) 
-		{
+		if (ui.isMobile()) {
 			$('#buttons').show();
 			$('#button-left').on('click', function () {
 				click(37);
@@ -74,11 +65,12 @@ game.run = function()
 			});
 		}
 	}
-}
+};
 
 $(function () {
 	'use strict';
-
+	ui.fillList('#level', game.playlevel.map.length, 'Level');
+	player.setStartPosFromLevel();
 	//player.setStartPosFromLevel();
 	//player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
 	$('#play-button').on('click', function () {
@@ -86,16 +78,15 @@ $(function () {
 		if (player.name === '') {
 			$('#invalid').text('your name is not valid');
 		} else {
-			playlevel = jQuery.extend(true, {}, level); //copy the originLevel to level
-			playlevel.current = $('#level').val();
-			player.setStartPos(playlevel.playerStartX[playlevel.current], playlevel.playerStartY[playlevel.current]);
+			game.playlevel = jQuery.extend(true, {}, level); //copy the originLevel to level
+			game.playlevel.current = $('#level').val();
+			player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
 			time = 0;
 			$('#invalid').text('');
 			$('#menu').fadeOut();
 			$('#player-name').text('Player name: ' + player.name);
 			$('#game').show();
-			$('#gameBoard').addClass('center');
-			ui.update(playlevel);
+			ui.update(game.playlevel);
 			if (ui.isMobile()) {
 				$('#buttons').show();
 				$('#button-left').on('click', function () {
@@ -134,7 +125,7 @@ $(function () {
 					runTime = true;
 				}
 				logic.askMoveLocation(e.keyCode);
-				ui.update(playlevel);
+				ui.update(game.playlevel);
 			});
 		}
 	});
