@@ -5,7 +5,6 @@
 // Modified:    2014-09-29
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
-'use strict';
 logic.movement = {};
 logic.movement.movePlayer = function (where) {
     switch (where) {

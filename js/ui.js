@@ -5,7 +5,6 @@
 // Modified:    2014-09-29
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
-'use strict';
 var ui = {};
 ui.isMobile = function () {
 	return screen.width <= 768;

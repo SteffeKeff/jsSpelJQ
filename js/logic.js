@@ -5,7 +5,6 @@
 // Modified:    2014-09-29
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
-'use strict';
 var logic = {};
 logic.askMoveLocation = function (key) {
     var where = 0;

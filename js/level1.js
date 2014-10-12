@@ -5,7 +5,6 @@
 // Modified:    2014-09-29
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
-'use strict';
 level.mapH.push(11);
 level.mapW.push(32);
 level.playerStartX.push(15);
