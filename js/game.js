@@ -36,8 +36,8 @@ game.run = function () {
 		game.playlevel = level.getCopy();
 		game.playlevel.current = $('#level').val();
 		player.setStartPosFromLevel();
+		$('#menu').hide();
 		$('#invalid').text('');
-		$('#menu').fadeOut();
 		$('#player-name').text('Player name: ' + player.name);
 		$('#game').show();
 		$('#gameBoard').addClass('center');
@@ -53,10 +53,10 @@ game.run = function () {
 };
 
 game.tutorial = function () {
-	$('#menu').fadeOut();
-	$('#tutorial').show();
+	$('#menu').hide();
+	$('#tutorial').fadeIn();
 	$('#next').on('click', function () {
-		$('#tutorial').fadeOut();
+		$('#tutorial').hide();
 		$('#menu').fadeIn();
 	});
 };

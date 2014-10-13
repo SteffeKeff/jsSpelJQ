@@ -82,7 +82,7 @@ logic.gameLost = function () {
     timer.stop();
     $(window).off('keydown');
     player.setStartPosFromLevel();
-    $('#game').append('<button id="next" class="center myButton">To Menu</button>');
+    $('#game').append('<button id="next" class="center my-button">To Menu</button>');
     $('#next').on('click', function () {
         logic.lostLevel();
     });
@@ -98,7 +98,7 @@ logic.gameWon = function () {
     game.runTime = false;
     $(window).off('keydown');
     if (parseInt(game.playlevel.current) !== (game.playlevel.map.length - 1)) {
-        $('#game').append('<button id="next" class="center myButton">Next level</button>');
+        $('#game').append('<button id="next" class="center my-button">Next level</button>');
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
                 logic.nextLevel();
@@ -108,7 +108,7 @@ logic.gameWon = function () {
             logic.nextLevel();
         });
     } else {
-        $('#game').append('<button id="next" class="center myButton">To Menu</button>');
+        $('#game').append('<button id="next" class="center my-button">To Menu</button>');
         $('#next').on('click', function () {
             logic.wonLevel();
         });

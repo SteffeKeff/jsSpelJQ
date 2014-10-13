@@ -13,11 +13,13 @@
 		<meta charset="UTF-8">
 		<title>Amaze</title>
 		<link rel="shortcut icon" href="img/player.png" />
+		<link href='http://fonts.googleapis.com/css?family=Annie+Use Your Telescope' rel='stylesheet' type='text/css'>
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
 		<script src='js/level.js' type='text/javascript'></script>
 		<script src='js/level0.js' type='text/javascript'></script>
 		<script src='js/level1.js' type='text/javascript'></script>
 		<script src='js/level2.js' type='text/javascript'></script>
+		<script src='js/level3.js' type='text/javascript'></script>
 		<script src='js/ui.js' type='text/javascript'></script> 
 		<script src='js/io.js' type='text/javascript'></script> 
 		<script src='js/timer.js' type='text/javascript'></script> 
@@ -36,9 +38,9 @@
 				<h3>Enter your name</h3>
 				<input id='name' type='text' placeholder='name'>
 				<p id='invalid'>&nbsp;</p>
-				<button id='play-button' class='center myButton'>Play game</button>
-				<select id='level' class='center myButton'></select>
-				<button id='tutorial-button' class='center myButton'>Tutorial</button>
+				<button id='play-button' class='center my-button'>Play game</button>
+				<select id='level' class='center my-button'></select>
+				<button id='tutorial-button' class='center my-button'>Tutorial</button>
 			</section>
 			<section id='game' class='hidden'>
 				<p id ='player-name'></p>
@@ -57,8 +59,11 @@
 				<p>and the goal of Amaze is to reach the treasure<img src='img/money.png' alt='money'></p>
 				<p>You can not walk through rocks<img src='img/rock.png' alt='rock'></p>
 				<p>and you will lose the game if you walk on a bomb! <img src='img/bomb.png' alt='bomb'></p>
-				<button id='next' class='center myButton'>To Menu</button>
+				<button id='next' class='center my-button'>To Menu</button>
 			</section>
 		</main>
+		<footer class='center'>
+		<p id='footer-text'>A game created by Erik Welander and Stefan De Geer</p>
+		</footer>
 	</body>
 </html>
