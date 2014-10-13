@@ -12,7 +12,9 @@ game.runTime = false;
 
 game.update = function (keycode) {
 	setInterval(function () {
-		$('#timer').text('Timer: ' + timer.time());
+		if (timer.time() !== 0) {
+			$('#timer').text('Timer: ' + timer.time());
+		}
 	}, 100);
 	if (!game.runTime) {
 		timer.start();

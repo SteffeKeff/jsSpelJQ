@@ -48,6 +48,7 @@ logic.setVisited = function () {
 
 logic.gameLost = function () {
     game.runTime = false;
+    timer.stop();
     $(window).off('keydown');
     player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
     $('#game').append('<button id="next" class="center myButton">To Menu</button>');
@@ -71,6 +72,7 @@ logic.gameLost = function () {
 };
 
 logic.gameWon = function () {
+    timer.stop();
     game.runTime = false;
     $(window).off('keydown');
     if (parseInt(game.playlevel.current) !== (game.playlevel.map.length - 1)) {
