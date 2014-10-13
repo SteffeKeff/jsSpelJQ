@@ -21,7 +21,6 @@ game.update = function (keycode) {
 	logic.askMoveLocation(keycode);
 	ui.update(game.playlevel);
 };
-io.addKeyListener(window, game.update);
 io.addMouseListener('#play-button', game.validateName);
 
 
@@ -36,6 +35,7 @@ game.validateName = function () {
 
 game.run = function () {
 	if (game.validateName()) {
+		io.addKeyListener(window, game.update);
 		game.playlevel = level.getCopy();
 		game.playlevel.current = $('#level').val();
 		player.setStartPosFromLevel();

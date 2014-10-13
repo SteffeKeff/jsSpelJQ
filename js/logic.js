@@ -47,9 +47,8 @@ logic.setVisited = function () {
 
 
 logic.gameLost = function () {
-    $(window).off('keydown');
-    timer.stop();
     game.runTime = false;
+    $(window).off('keydown');
     player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
     $('#game').append('<button id="next" class="center myButton">To Menu</button>');
     $('#next').on('click', function () {
@@ -72,15 +71,14 @@ logic.gameLost = function () {
 };
 
 logic.gameWon = function () {
-    $(window).off('keydown');
     game.runTime = false;
+    $(window).off('keydown');
     if (parseInt(game.playlevel.current) !== (game.playlevel.map.length - 1)) {
         $('#game').append('<button id="next" class="center myButton">Next level</button>');
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
                 game.playlevel.current++;
                 $('#timer').text('Timer: 0.00');
-                timer.stop();
                 player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
                 $('#next').remove();
                 ui.update(game.playlevel);
@@ -93,7 +91,6 @@ logic.gameWon = function () {
         $('#next').on('click', function () {
             game.playlevel.current++;
             $('#timer').text('Timer: 0.00');
-            timer.stop();
             player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
             $('#next').remove();
             ui.update(game.playlevel);
@@ -108,7 +105,6 @@ logic.gameWon = function () {
             game.playlevel.current = 0;
             game.playlevel = jQuery.extend(true, {}, level);
             $('#timer').text('Timer: 0.00');
-            timer.stop();
             $('#next').remove();
             $('#game').hide();
             $('#menu').show();
