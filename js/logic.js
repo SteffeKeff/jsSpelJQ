@@ -7,6 +7,36 @@
 /////////////////////////////////////////////////////////////////////////////
 var logic = {};
 
+logic.lost = function () {
+    game.playlevel.current = 0;
+    $(window).off('keypress');
+    $('#next').remove();
+    $('#game').hide();
+    $('#menu').show();
+    game.playlevel = game.playlevel.getCopy();
+};
+
+logic.nextLevel = function () {
+    game.playlevel.current++;
+    $('#timer').text('Timer: 0.00');
+    player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
+    $('#next').remove();
+    ui.update(game.playlevel);
+    $(window).off('keypress');
+    $(window).on('keydown', function (e) {
+        game.update(e.keyCode);
+    });
+};
+
+logic.gameWon = function () {
+    game.playlevel.current = 0;
+    game.playlevel = game.playlevel.getCopy();
+    $(window).off('keypress');
+    $('#next').remove();
+    $('#game').hide();
+    $('#menu').show();
+};
+
 logic.moveLocation = function (key) {
     var where = 0;
     switch (key) {
@@ -52,20 +82,11 @@ logic.gameLost = function () {
     player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
     $('#game').append('<button id="next" class="center myButton">To Menu</button>');
     $('#next').on('click', function () {
-        game.playlevel.current = 0;
-        $('#next').remove();
-        $('#game').hide();
-        $('#menu').show();
-        game.playlevel = jQuery.extend(true, {}, level);
+        logic.lost();
     });
     $(window).on('keypress', function (e) {
         if (e.keyCode === 13) {
-            $(window).off('keypress');
-            game.playlevel.current = 0;
-            $('#next').remove();
-            $('#game').hide();
-            $('#menu').show();
-            game.playlevel = game.playlevel.getCopy();
+            logic.lost();
         }
     });
 };
@@ -78,46 +99,20 @@ logic.gameWon = function () {
         $('#game').append('<button id="next" class="center myButton">Next level</button>');
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
-                game.playlevel.current++;
-                $('#timer').text('Timer: 0.00');
-                player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
-                $('#next').remove();
-                ui.update(game.playlevel);
-                $(window).off('keypress');
-                $(window).on('keydown', function (e) {
-                    game.update(e.keyCode);
-                });
+                logic.nextLevel();
             }
         });
         $('#next').on('click', function () {
-            game.playlevel.current++;
-            $('#timer').text('Timer: 0.00');
-            player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
-            $('#next').remove();
-            ui.update(game.playlevel);
-            $(window).off('keypress');
-            $(window).on('keydown', function (e) {
-                game.update(e.keyCode);
-            });
+            logic.nextLevel();
         });
     } else {
         $('#game').append('<button id="next" class="center myButton">To Menu</button>');
         $('#next').on('click', function () {
-            game.playlevel.current = 0;
-            game.playlevel = jQuery.extend(true, {}, level);
-            $('#timer').text('Timer: 0.00');
-            $('#next').remove();
-            $('#game').hide();
-            $('#menu').show();
+            logic.gameWon();
         });
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
-                game.playlevel.current = 0;
-                game.playlevel = jQuery.extend(true, {}, level);
-                $(window).off('keypress');
-                $('#next').remove();
-                $('#game').hide();
-                $('#menu').show();
+                logic.gameWon();
             }
         });
     }
