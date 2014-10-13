@@ -9,7 +9,6 @@
 var game = {};
 game.playlevel = level.getCopy();
 game.runTime = false;
-io.addMouseListener('#play-button', game.validateName);
 
 game.update = function (keycode) {
 	setInterval(function () { //Update timer text 10 times/second if timer.time is not 0
@@ -66,10 +65,6 @@ $(function () {
 	ui.fillList('#level', game.playlevel.map.length, 'Level');
 	player.setStartPosFromLevel();
 
-	$('#play-button').on('click', function () {
-		game.run();
-	});
-	$('#tutorial-button').on('click', function () {
-		game.tutorial();
-	});
+	io.addMouseListener('#play-button', game.run);
+	io.addMouseListener('#tutorial-button', game.tutorial);
 });
