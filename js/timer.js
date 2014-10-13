@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////////////////////////////////
+// Name:        timer.js
+// Purpose:     Timing in seconds between two periods
+// Authors:     Erik Welander, Stefan De Geer
+// Modified:    2014-10-13
+// Licence:     GNU GPL
+/////////////////////////////////////////////////////////////////////////////
+
 var timer = {};
 timer.startVal = 0;
 timer.stopVal = 0;

@@ -2,7 +2,7 @@
 // Name:        logic.movement.js
 // Purpose:     Manages everything related to a movement by a character
 // Authors:     Erik Welander, Stefan De Geer
-// Modified:    2014-09-29
+// Modified:    2014-10-13
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 logic.movement = {};

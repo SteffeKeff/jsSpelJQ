@@ -2,7 +2,7 @@
 // Name:        player.js
 // Purpose:     Player data container
 // Authors:     Erik Welander, Stefan De Geer
-// Modified:    2014-09-29
+// Modified:    2014-10-13
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 var player = {};
