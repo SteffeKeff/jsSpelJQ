@@ -2,7 +2,7 @@
 // Name:        game.js
 // Purpose:     Game mainframe
 // Authors:     Erik Welander, Stefan De Geer
-// Modified:    2014-09-29
+// Modified:    2014-10-13
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 
@@ -17,10 +17,6 @@ game.update = function (keycode) {
 			$('#timer').text('Timer: ' + timer.time());
 		}
 	}, 100);
-	if (!game.runTime) {
-		timer.start();
-		game.runTime = true;
-	}
 	logic.moveLocation(keycode);
 	ui.update(game.playlevel);
 };

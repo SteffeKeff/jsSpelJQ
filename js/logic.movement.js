@@ -14,6 +14,10 @@ logic.movement.movePlayer = function (where) {
         if (logic.movement.collision(player.x - 1, player.y)) {
             logic.movement.handleCollision(player.x - 1, player.y);
         } else {
+            if (!game.runTime) {
+                timer.start();
+                game.runTime = true;
+            }
             logic.setVisited();
             player.moveLeft();
             logic.setPlayer();
@@ -23,6 +27,10 @@ logic.movement.movePlayer = function (where) {
         if (logic.movement.collision(player.x + 1, player.y)) {
             logic.movement.handleCollision(player.x + 1, player.y);
         } else {
+            if (!game.runTime) {
+                timer.start();
+                game.runTime = true;
+            }
             logic.setVisited();
             player.moveRight();
             logic.setPlayer();
@@ -32,6 +40,10 @@ logic.movement.movePlayer = function (where) {
         if (logic.movement.collision(player.x, player.y - 1)) {
             logic.movement.handleCollision(player.x, player.y - 1);
         } else {
+            if (!game.runTime) {
+                timer.start();
+                game.runTime = true;
+            }
             logic.setVisited();
             player.moveUp();
             logic.setPlayer();
@@ -41,6 +53,10 @@ logic.movement.movePlayer = function (where) {
         if (logic.movement.collision(player.x, player.y + 1)) {
             logic.movement.handleCollision(player.x, player.y + 1);
         } else {
+            if (!game.runTime) {
+                timer.start();
+                game.runTime = true;
+            }
             logic.setVisited();
             player.moveDown();
             logic.setPlayer();

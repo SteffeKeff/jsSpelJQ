@@ -9,6 +9,7 @@ var logic = {};
 
 logic.lostLevel = function () {
     game.playlevel.current = 0;
+    $('#timer').text('Timer: 0.00');
     $(window).off('keypress');
     $('#next').remove();
     $('#game').hide();
@@ -30,6 +31,7 @@ logic.nextLevel = function () {
 
 logic.wonLevel = function () {
     game.playlevel.current = 0;
+    $('#timer').text('Timer: 0.00');
     game.playlevel = game.playlevel.getCopy();
     $(window).off('keypress');
     $('#next').remove();
