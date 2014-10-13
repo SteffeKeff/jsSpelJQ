@@ -28,7 +28,7 @@ logic.nextLevel = function () {
     });
 };
 
-logic.gameWon = function () {
+logic.won = function () {
     game.playlevel.current = 0;
     game.playlevel = game.playlevel.getCopy();
     $(window).off('keypress');
@@ -108,11 +108,11 @@ logic.gameWon = function () {
     } else {
         $('#game').append('<button id="next" class="center myButton">To Menu</button>');
         $('#next').on('click', function () {
-            logic.gameWon();
+            logic.won();
         });
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
-                logic.gameWon();
+                logic.won();
             }
         });
     }
