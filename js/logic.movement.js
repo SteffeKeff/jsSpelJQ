@@ -51,6 +51,7 @@ logic.movement.movePlayer = function (where) {
     }
 
 };
+
 logic.movement.collision = function (posX, posY) {
     if (game.playlevel.map[game.playlevel.current][posY][posX] == '*' ||
         game.playlevel.map[game.playlevel.current][posY][posX] == '#' ||
@@ -59,9 +60,11 @@ logic.movement.collision = function (posX, posY) {
     }
     return false;
 };
+
 logic.movement.getCollisionItem = function (posX, posY) {
     return game.playlevel.map[game.playlevel.current][posY][posX];
 };
+
 logic.movement.handleCollision = function (posX, posY) {
     var collisionIntem = logic.movement.getCollisionItem(posX, posY);
     if (collisionIntem == '*') {

@@ -9,9 +9,10 @@
 var game = {};
 game.playlevel = level.getCopy();
 game.runTime = false;
+io.addMouseListener('#play-button', game.validateName);
 
 game.update = function (keycode) {
-	setInterval(function () {
+	setInterval(function () { //Update timer text 10 times/second if timer.time is not 0
 		if (timer.time() !== 0) {
 			$('#timer').text('Timer: ' + timer.time());
 		}
@@ -23,8 +24,6 @@ game.update = function (keycode) {
 	logic.moveLocation(keycode);
 	ui.update(game.playlevel);
 };
-io.addMouseListener('#play-button', game.validateName);
-
 
 game.validateName = function () {
 	player.name = $('#name').val().trim();
@@ -46,16 +45,17 @@ game.run = function () {
 		$('#player-name').text('Player name: ' + player.name);
 		$('#game').show();
 		$('#gameBoard').addClass('center');
-		if (true) {
+		if (ui.isMobile()) {
 			$('#buttons').show();
-			io.addMouseListener('#button-left', game.update, 37);
-			io.addMouseListener('#button-right', game.update, 39);
-			io.addMouseListener('#button-up', game.update, 38);
-			io.addMouseListener('#button-down', game.update, 40);
+			io.addMouseListener('#button-left', game.update, io.KB_ARROW_LEFT);
+			io.addMouseListener('#button-right', game.update, io.KB_ARROW_RIGHT);
+			io.addMouseListener('#button-up', game.update, io.KB_ARROW_UP);
+			io.addMouseListener('#button-down', game.update, io.KB_ARROW_DOWN);
 		}
 		game.update();
 	}
 };
+
 game.tutorial = function () {
 	$('#menu').fadeOut();
 	$('#tutorial').show();

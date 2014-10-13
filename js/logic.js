@@ -6,24 +6,24 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 var logic = {};
+
 logic.moveLocation = function (key) {
     var where = 0;
-    alert(key);
     switch (key) {
-    case 65:
-    case 37:
+    case io.KB_KEY_D:
+    case io.KB_ARROW_LEFT:
         where = 0;
         break;
-    case 68:
-    case 39:
+    case io.KB_KEY_A:
+    case io.KB_ARROW_RIGHT:
         where = 1;
         break;
-    case 87:
-    case 38:
+    case io.KB_KEY_W:
+    case io.KB_ARROW_UP:
         where = 2;
         break;
-    case 83:
-    case 40:
+    case io.KB_KEY_S:
+    case io.KB_ARROW_DOWN:
         where = 3;
         break;
     default:
@@ -39,13 +39,11 @@ logic.setPlayer = function () {
         game.playlevel.map[game.playlevel.current][player.y].substring(player.x + 1, game.playlevel.map[game.playlevel.current][player.y].length);
 };
 
-
 logic.setVisited = function () {
     game.playlevel.map[game.playlevel.current][player.y] =
         game.playlevel.map[game.playlevel.current][player.y].substring(0, player.x) + "." +
         game.playlevel.map[game.playlevel.current][player.y].substring(player.x + 1, game.playlevel.map[game.playlevel.current][player.y].length);
 };
-
 
 logic.gameLost = function () {
     game.runTime = false;

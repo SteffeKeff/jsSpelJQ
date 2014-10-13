@@ -12,6 +12,7 @@ level.mapW = [];
 level.playerStartX = [];
 level.playerStartY = [];
 level.current = 0;
+
 level.getCopy = function (levelNum) {
 	return jQuery.extend(true, {}, level);
 };
