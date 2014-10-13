@@ -19,7 +19,7 @@ logic.lostLevel = function () {
 logic.nextLevel = function () {
     game.playlevel.current++;
     $('#timer').text('Timer: 0.00');
-    player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
+    player.setStartPosFromLevel();
     $('#next').remove();
     ui.update(game.playlevel);
     $(window).off('keypress');
