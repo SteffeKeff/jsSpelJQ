@@ -7,7 +7,7 @@
 /////////////////////////////////////////////////////////////////////////////
 var logic = {};
 
-logic.lost = function () {
+logic.lostLevel = function () {
     game.playlevel.current = 0;
     $(window).off('keypress');
     $('#next').remove();
@@ -28,7 +28,7 @@ logic.nextLevel = function () {
     });
 };
 
-logic.won = function () {
+logic.wonLevel = function () {
     game.playlevel.current = 0;
     game.playlevel = game.playlevel.getCopy();
     $(window).off('keypress');
@@ -79,14 +79,14 @@ logic.gameLost = function () {
     game.runTime = false;
     timer.stop();
     $(window).off('keydown');
-    player.setStartPos(game.playlevel.playerStartX[game.playlevel.current], game.playlevel.playerStartY[game.playlevel.current]);
+    player.setStartPosFromLevel();
     $('#game').append('<button id="next" class="center myButton">To Menu</button>');
     $('#next').on('click', function () {
-        logic.lost();
+        logic.lostLevel();
     });
     $(window).on('keypress', function (e) {
         if (e.keyCode === 13) {
-            logic.lost();
+            logic.lostLevel();
         }
     });
 };
@@ -108,11 +108,11 @@ logic.gameWon = function () {
     } else {
         $('#game').append('<button id="next" class="center myButton">To Menu</button>');
         $('#next').on('click', function () {
-            logic.won();
+            logic.wonLevel();
         });
         $(window).on('keypress', function (e) {
             if (e.keyCode === 13) {
-                logic.won();
+                logic.wonLevel();
             }
         });
     }
