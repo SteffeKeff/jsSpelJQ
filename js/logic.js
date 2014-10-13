@@ -6,8 +6,9 @@
 // Licence:     GNU GPL
 /////////////////////////////////////////////////////////////////////////////
 var logic = {};
-logic.askMoveLocation = function (key) {
+logic.moveLocation = function (key) {
     var where = 0;
+    alert(key);
     switch (key) {
     case 65:
     case 37:

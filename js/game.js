@@ -20,7 +20,7 @@ game.update = function (keycode) {
 		timer.start();
 		game.runTime = true;
 	}
-	logic.askMoveLocation(keycode);
+	logic.moveLocation(keycode);
 	ui.update(game.playlevel);
 };
 io.addMouseListener('#play-button', game.validateName);
@@ -46,22 +46,12 @@ game.run = function () {
 		$('#player-name').text('Player name: ' + player.name);
 		$('#game').show();
 		$('#gameBoard').addClass('center');
-		if (ui.isMobile()) {
+		if (true) {
 			$('#buttons').show();
-			$('#button-left').on('click', function () {
-				click(37);
-			});
-			$('#button-right').on('click', function () {
-				console.log('right');
-				click(39);
-			});
-			$('#button-up').on('click', function () {
-				console.log('up');
-				click(38);
-			});
-			$('#button-down').on('click', function () {
-				click(40);
-			});
+			io.addMouseListener('#button-left', game.update, 37);
+			io.addMouseListener('#button-right', game.update, 39);
+			io.addMouseListener('#button-up', game.update, 38);
+			io.addMouseListener('#button-down', game.update, 40);
 		}
 		game.update();
 	}
