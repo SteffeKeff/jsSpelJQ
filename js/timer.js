@@ -11,5 +11,8 @@ timer.stop = function () {
 
 timer.time = function () {
 	timer.endVal = new Date().getTime();
-	return (((timer.endVal - timer.startVal) / 1000)).toFixed(2);
+	var diffrence = (((timer.endVal - timer.startVal) / 1000)).toFixed(2);
+	if(diffrence < 1e7)
+		return diffrence;
+	return 0;
 };
