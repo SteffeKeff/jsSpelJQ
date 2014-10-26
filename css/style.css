@@ -64,8 +64,10 @@ table{
 	margin:5px;
 }
 #level{
+	/*
+	<Problem med mac och windows>
 	height: 38px;
-	width: 130px;
+	width: 130px;*/
 	margin-top: 10px;
 }
 #tutorial-text{
